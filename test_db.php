@@ -10,8 +10,15 @@ try {
             PDO::ATTR_EMULATE_PREPARES => false, // Prevent SQL injection
         ]
     );
-    echo "✅ Connected to MySQL successfully!";
+
+    // Log "Hello" 5 times
+    for ($i = 0; $i < 5; $i++) {
+        error_log("Hello");
+    }
+
+    echo "✅ Logged 'Hello' 5 times!";
 } catch (PDOException $e) {
-    die("❌ Database connection failed: " . $e->getMessage());
+    error_log("❌ Database connection failed: " . $e->getMessage());
+    die("❌ Database connection failed. Check logs for details.");
 }
 ?>
